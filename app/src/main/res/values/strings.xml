@@ -8,5 +8,12 @@
     <string name="day_fri_str">금</string>
     <string name="day_sat_str">토</string>
     <string name="day_sun_str">일</string>
-    <string name="desc_move_alarm_list_item">move alarm list item</string>
+    <string name="alarm_list_no_item">no item</string>
+    <string name="alarm">알람</string>
+    <string name="add">추가</string>
+    <string name="edit">편집</string>
+    <string name="sort">정렬</string>
+    <string name="setting">설정</string>
+    <string name="inquire">문의하기</string>
+    <string name="desc_move_alarm_list_item">알람 아이템 순서 바꾸기</string>
 </resources>

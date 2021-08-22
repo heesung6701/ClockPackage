@@ -10,4 +10,5 @@
     <dimen name="alarm_list_item_meridiem_text_size">24sp</dimen>
     <dimen name="alarm_list_item_time_text_size">48sp</dimen>
     <dimen name="alarm_list_item_date_text_size">8sp</dimen>
+    <dimen name="app_bar_height">140dp</dimen>
 </resources>
