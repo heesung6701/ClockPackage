@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/alarm_list_item_layout_height"
+        android:background="@drawable/rounded_background_8dp"
+        android:padding="@dimen/alarm_list_item_padding">
+
+        <CheckBox
+            android:id="@+id/alarm_list_item_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/alarm_list_item_checkbox_start_margin"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/alarm_list_item_meridiem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/alarm_list_item_meridium_margin_start"
+            android:text=""
+            android:textSize="@dimen/alarm_list_item_meridiem_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/alarm_list_item_time"
+            app:layout_constraintStart_toEndOf="@id/alarm_list_item_checkbox"
+            tools:text="@string/meridiem_am" />
+
+        <TextView
+            android:id="@+id/alarm_list_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/alarm_list_item_time_margin_start"
+            android:textSize="@dimen/alarm_list_item_time_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/alarm_list_item_meridiem"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5:57" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:textSize="@dimen/alarm_list_item_date_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/alarm_list_item_control_layout"
+            app:layout_constraintStart_toEndOf="@id/alarm_list_item_time"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="invisible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_mon_str"
+                app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_tue_str"
+                app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_wed_str"
+                app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_thu_str"
+                app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_fri_str"
+                app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_sat_str"
+                app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day_sun_str"
+                app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/alarm_list_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/alarm_list_item_control_layout"
+            app:layout_constraintStart_toEndOf="@id/alarm_list_item_time"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="8월 23일 (월)" />
+
+        <FrameLayout
+            android:id="@+id/alarm_list_item_control_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/alarm_list_item_control_margin_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/alarm_list_item_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:id="@+id/alarm_list_item_scrollable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/desc_move_alarm_list_item"
+                android:src="@drawable/ic_baseline_unfold_more_24" />
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="alarm_list_item_checkbox_start_margin">8dp</dimen>
+    <dimen name="alarm_list_item_layout_height">120dp</dimen>
+    <dimen name="alarm_list_item_meridium_margin_start">8dp</dimen>
+    <dimen name="alarm_list_item_time_margin_left_action_mode">6dp</dimen>
+    <dimen name="alarm_list_item_time_margin_start">4dp</dimen>
+    <dimen name="alarm_list_item_control_margin_end">8dp</dimen>
+    <dimen name="alarm_list_item_padding">4dp</dimen>
+    <dimen name="alarm_list_item_meridiem_text_size">24sp</dimen>
+    <dimen name="alarm_list_item_time_text_size">48sp</dimen>
+    <dimen name="alarm_list_item_date_text_size">8sp</dimen>
+    <dimen name="app_bar_height">140dp</dimen>
+</resources>
