@@ -34,8 +34,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:menu="@menu/menu_alarm"
-                    app:title="@string/alarm" />
+                    tools:menu="@menu/menu_alarm"
+                    />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
@@ -56,7 +56,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:navGraph="@navigation/main_navigation" />
+                app:navGraph="@navigation/main_navigation_graph" />
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
