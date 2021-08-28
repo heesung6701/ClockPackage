@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ClockPackage</string>
     <string name="meridiem_am">오전</string>
+    <string name="meridiem_pm">오후</string>
     <string name="day_mon_str">월</string>
     <string name="day_tue_str">화</string>
     <string name="day_wed_str">수</string>

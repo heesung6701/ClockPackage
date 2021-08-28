@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private val navChangeListener =
         NavController.OnDestinationChangedListener { _, destination, _ ->
             collapsingToolbarLayout.title = destination.label
-            Log.d("HSSS", "DestinationChanged : " + destination.label)
             when (destination.id) {
                 R.id.navigation_alarm -> {
                     toolbar.menu.clear()
