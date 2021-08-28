@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_alarm"
+        android:contentDescription="@string/alarm"
+        android:title="@string/alarm"
+        android:enabled="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_word_clock"
+        android:contentDescription="@string/word_clock"
+        android:title="@string/word_clock"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_stopwatch"
+        android:contentDescription="@string/stop_watch"
+        android:title="@string/stop_watch"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_timer"
+        android:contentDescription="@string/timer"
+        android:title="@string/timer"
+        app:showAsAction="ifRoom" />
+</menu>

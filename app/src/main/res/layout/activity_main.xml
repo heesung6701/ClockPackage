@@ -49,7 +49,17 @@
                 android:id="@+id/content_alarm_list"
                 layout="@layout/content_alarm_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="48dp"
+                />
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            app:menu="@menu/menu_alarm_bnv"
+            app:labelVisibilityMode="labeled"
+            />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
