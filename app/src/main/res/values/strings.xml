@@ -8,7 +8,7 @@
     <string name="day_fri_str">금</string>
     <string name="day_sat_str">토</string>
     <string name="day_sun_str">일</string>
-    <string name="alarm_list_no_item">no item</string>
+    <string name="alarm_list_no_item">알람이 없습니다.</string>
     <string name="alarm">알람</string>
     <string name="add">추가</string>
     <string name="edit">편집</string>
@@ -16,7 +16,7 @@
     <string name="setting">설정</string>
     <string name="inquire">문의하기</string>
     <string name="desc_move_alarm_list_item">알람 아이템 순서 바꾸기</string>
-    <string name="word_clock">세계시각</string>
+    <string name="world_clock">세계시각</string>
     <string name="stop_watch">스탑워치</string>
     <string name="timer">타이머</string>
 </resources>
