@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.quokkaman.android.app.R
+import com.quokkaman.android.app.databinding.AlarmFragmentBinding
 
 class AlarmFragment : Fragment() {
 
@@ -23,10 +24,11 @@ class AlarmFragment : Fragment() {
         return inflater.inflate(R.layout.alarm_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = AlarmFragmentBinding.bind(view)
 
+        viewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
+        binding.alarmViewModel = viewModel
+    }
 }

@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.alarm.AlarmFragment">
+<layout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/list_item_alarm" >
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="alarmViewModel"
+            type="com.quokkaman.android.app.ui.alarm.AlarmViewModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.alarm.AlarmFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            setAlarmList="@{alarmViewModel.alarmListLiveData}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/alarm_list_item"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/alarm_list_no_item"
-            android:visibility="invisible"
-            tools:visibility="visible"
-            />
-    </androidx.recyclerview.widget.RecyclerView>
-
-</FrameLayout>
+            android:visibility="@{alarmViewModel.alarmListLiveData.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
+            tools:visibility="visible" />
+    </FrameLayout>
+</layout>
