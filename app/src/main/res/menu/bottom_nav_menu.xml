@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_alarm"
+        android:contentDescription="@string/alarm"
+        android:title="@string/alarm"
+        android:enabled="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/navigation_world_clock"
+        android:contentDescription="@string/world_clock"
+        android:title="@string/world_clock"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navigation_stopwatch"
+        android:contentDescription="@string/stop_watch"
+        android:title="@string/stop_watch"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/navigation_timer"
+        android:contentDescription="@string/timer"
+        android:title="@string/timer"
+        app:showAsAction="ifRoom" />
+</menu>

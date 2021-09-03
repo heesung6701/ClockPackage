@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
 
     <data>
 
+        <import type="com.quokkaman.android.app.common.data.Alarm" />
+
+        <import type="com.quokkaman.android.app.common.data.AlarmPlan" />
+
+        <import type="com.quokkaman.android.app.common.data.AlarmDatePlan" />
+
+        <import type="com.quokkaman.android.app.common.data.AlarmDayPlan" />
+
+        <import type="com.quokkaman.android.app.common.data.Time" />
+
+        <import type="com.quokkaman.android.app.common.data.DayOfWeek" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="alarm"
+            type="Alarm" />
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="@dimen/alarm_list_item_layout_height"
@@ -28,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/alarm_list_item_meridium_margin_start"
-            android:text=""
+            android:text="@{(alarm.time.hour &lt;= 12) ? @string/meridiem_am : @string/meridiem_pm}"
             android:textSize="@dimen/alarm_list_item_meridiem_text_size"
             app:layout_constraintBottom_toBottomOf="@id/alarm_list_item_time"
             app:layout_constraintStart_toEndOf="@id/alarm_list_item_checkbox"
@@ -39,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/alarm_list_item_time_margin_start"
+            android:text="@{alarm.time.toString()}"
             android:textSize="@dimen/alarm_list_item_time_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/alarm_list_item_meridiem"
@@ -51,6 +71,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:textSize="@dimen/alarm_list_item_date_text_size"
+            android:visibility="@{(alarm.plan instanceof AlarmDayPlan) ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/alarm_list_item_control_layout"
             app:layout_constraintStart_toEndOf="@id/alarm_list_item_time"
@@ -58,42 +79,56 @@
             tools:visibility="invisible">
 
             <TextView
+                setDay="@{DayOfWeek.MONDAY}"
+                setPlan="@{alarm.plan}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_mon_str"
                 app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
 
             <TextView
+                setDay="@{DayOfWeek.TUESDAY}"
+                setPlan="@{alarm.plan}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_tue_str"
                 app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
 
             <TextView
+                setDay="@{DayOfWeek.WEDNESDAY}"
+                setPlan="@{alarm.plan}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_wed_str"
                 app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
 
             <TextView
+                setDay="@{DayOfWeek.THURSDAY}"
+                setPlan="@{alarm.plan}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_thu_str"
                 app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
 
             <TextView
+                setDay="@{DayOfWeek.FRIDAY}"
+                setPlan="@{alarm.plan}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_fri_str"
                 app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
 
             <TextView
+                setDay="@{DayOfWeek.SATURDAY}"
+                setPlan="@{alarm.plan}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_sat_str"
                 app:drawableTopCompat="@drawable/ic_baseline_dot_4" />
 
             <TextView
+                setDay="@{DayOfWeek.SUNDAY}"
+                setPlan="@{alarm.plan}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/day_sun_str"
@@ -105,6 +140,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:text="@{alarm.date.toString()}"
+            android:visibility="@{alarm.plan instanceof AlarmDatePlan ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/alarm_list_item_control_layout"
             app:layout_constraintStart_toEndOf="@id/alarm_list_item_time"
@@ -124,7 +161,8 @@
                 android:id="@+id/alarm_list_item_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:saveEnabled="@{alarm.activate}" />
 
             <ImageView
                 android:id="@+id/alarm_list_item_scrollable"
@@ -132,7 +170,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/desc_move_alarm_list_item"
-                android:src="@drawable/ic_baseline_unfold_more_24" />
+                android:src="@drawable/ic_baseline_unfold_more_24"
+                android:visibility="invisible"
+                tools:visibility="visible" />
         </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
