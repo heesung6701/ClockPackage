@@ -1,7 +1,7 @@
 package com.quokkaman.android.app
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.quokkaman.android.app.databinding.ActivityMainBinding
+import com.quokkaman.android.app.ui.alarm.edit.AlarmEditActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -84,8 +85,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_add ->
-                Toast.makeText(this, getString(R.string.add), Toast.LENGTH_SHORT).show()
+            R.id.menu_add -> {
+                val intent = Intent(this, AlarmEditActivity::class.java)
+                startActivity(intent)
+            }
             R.id.menu_edit ->
                 Toast.makeText(this, getString(R.string.edit), Toast.LENGTH_SHORT).show()
             R.id.menu_sort ->
