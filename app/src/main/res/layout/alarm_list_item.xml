@@ -70,7 +70,6 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:textSize="@dimen/alarm_list_item_date_text_size"
             android:visibility="@{(alarm.plan instanceof AlarmDayPlan) ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/alarm_list_item_control_layout"
@@ -146,6 +145,7 @@
             app:layout_constraintEnd_toStartOf="@id/alarm_list_item_control_layout"
             app:layout_constraintStart_toEndOf="@id/alarm_list_item_time"
             app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible"
             tools:text="8월 23일 (월)" />
 
         <FrameLayout
