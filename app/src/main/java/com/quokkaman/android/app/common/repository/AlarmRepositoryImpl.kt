@@ -12,7 +12,7 @@ class AlarmRepositoryImpl : AlarmRepository {
                     date = null,
                     plan = AlarmDayPlan(EnumSet.of(DayOfWeek.values()[(Math.random() * 100).toInt() % 7])),
                     activate = false,
-                    scheduleSetting = AlarmSetting(false, null),
+                    repeatSetting = AlarmSetting(false, null),
                     soundSetting = AlarmSetting(false, null),
                     vibrateSetting = AlarmSetting(false, null)
                 )

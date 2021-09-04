@@ -8,7 +8,7 @@ data class Alarm(
     val date: Date?,
     val activate: Boolean,
     val plan: AlarmPlan?,
-    val scheduleSetting: AlarmSetting<AlarmAgain>,
+    val repeatSetting: AlarmSetting<AlarmRepeat>,
     val soundSetting: AlarmSetting<AlarmSound>,
     val vibrateSetting: AlarmSetting<AlarmVibrate>
 )
