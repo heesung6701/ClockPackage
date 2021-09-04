@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.quokkaman.android.app.common.data.AlarmDatePlan" />
+
+        <import type="com.quokkaman.android.app.common.data.AlarmPlan" />
+
+        <import type="com.quokkaman.android.app.common.data.Time" />
+
+        <import type="com.quokkaman.android.app.common.data.DayOfWeek" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="alarmPlanViewModel"
+            type="com.quokkaman.android.app.ui.alarm.edit.AlarmPlanViewModel" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/item_alarm_plan_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{alarmPlanViewModel.titleLiveData}"
+                tools:text="내일-9월5일(일)" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> alarmPlanViewModel.clickDate()}"
+                android:src="@drawable/ic_baseline_calendar_today_24" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/mon"
+                setDay="@{DayOfWeek.MONDAY}"
+                setPlanEdit="@{alarmPlanViewModel.alarmPlanLiveData}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> alarmPlanViewModel.clickDay(DayOfWeek.MONDAY)}"
+                android:text="@string/day_mon_str"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tue"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tue"
+                setDay="@{DayOfWeek.TUESDAY}"
+                setPlanEdit="@{alarmPlanViewModel.alarmPlanLiveData}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> alarmPlanViewModel.clickDay(DayOfWeek.TUESDAY)}"
+                android:text="@string/day_tue_str"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/wed"
+                app:layout_constraintStart_toEndOf="@id/mon" />
+
+            <TextView
+                android:id="@+id/wed"
+                setDay="@{DayOfWeek.WEDNESDAY}"
+                setPlanEdit="@{alarmPlanViewModel.alarmPlanLiveData}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> alarmPlanViewModel.clickDay(DayOfWeek.WEDNESDAY)}"
+                android:text="@string/day_wed_str"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/thu"
+                app:layout_constraintStart_toEndOf="@id/tue" />
+
+            <TextView
+                android:id="@+id/thu"
+                setDay="@{DayOfWeek.THURSDAY}"
+                setPlanEdit="@{alarmPlanViewModel.alarmPlanLiveData}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> alarmPlanViewModel.clickDay(DayOfWeek.THURSDAY)}"
+                android:text="@string/day_thu_str"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fri"
+                app:layout_constraintStart_toEndOf="@id/wed" />
+
+            <TextView
+                android:id="@+id/fri"
+                setDay="@{DayOfWeek.FRIDAY}"
+                setPlanEdit="@{alarmPlanViewModel.alarmPlanLiveData}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> alarmPlanViewModel.clickDay(DayOfWeek.FRIDAY)}"
+                android:text="@string/day_fri_str"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/sat"
+                app:layout_constraintStart_toEndOf="@id/thu" />
+
+            <TextView
+                android:id="@+id/sat"
+                setDay="@{DayOfWeek.SATURDAY}"
+                setPlanEdit="@{alarmPlanViewModel.alarmPlanLiveData}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> alarmPlanViewModel.clickDay(DayOfWeek.SATURDAY)}"
+                android:text="@string/day_sat_str"
+                android:textColor="@android:color/holo_blue_dark"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/sun"
+                app:layout_constraintStart_toEndOf="@id/fri" />
+
+            <TextView
+                android:id="@+id/sun"
+                setDay="@{DayOfWeek.SUNDAY}"
+                setPlanEdit="@{alarmPlanViewModel.alarmPlanLiveData}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> alarmPlanViewModel.clickDay(DayOfWeek.SUNDAY)}"
+                android:text="@string/day_sun_str"
+                android:textColor="@android:color/holo_red_dark"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/sat" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

@@ -41,4 +41,18 @@ object AlarmDataBindingUtils {
             it?.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
         }
     }
+
+    @BindingAdapter("setPlanEdit", "setDay")
+    @JvmStatic
+    fun setDayPlanEdit(textView: TextView, plan: AlarmPlan?, day: DayOfWeek) {
+        if (plan !is AlarmDayPlan) return
+        val color = if (plan.contains(day)) ContextCompat.getColor(
+            textView.context,
+            R.color.grey
+        )
+        else ContextCompat.getColor(textView.context, android.R.color.tab_indicator_text)
+
+        textView.setTextColor(color)
+        textView.setBackgroundResource(R.drawable.shape_circle)
+    }
 }

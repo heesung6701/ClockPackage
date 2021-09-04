@@ -43,6 +43,10 @@
                 android:padding="@dimen/item_alarm_padding"
                 android:orientation="vertical">
 
+                <include
+                    layout="@layout/item_edit_alarm_plan"
+                    app:alarmPlanViewModel="@{planViewModel}"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
