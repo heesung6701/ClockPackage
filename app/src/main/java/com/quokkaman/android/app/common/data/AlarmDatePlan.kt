@@ -8,4 +8,8 @@ class AlarmDatePlan(private val date: Date) : AlarmPlan {
         val sdf = SimpleDateFormat("yyMMdd", Locale.KOREA)
         return sdf.format(date) == sdf.format(this.date)
     }
+
+    override fun getTitle(): String = SimpleDateFormat("MM월 dd일 (E)", Locale.KOREA).format(date.time)
+
+    override fun isDay(dayOfWeek: DayOfWeek): Boolean = false
 }
