@@ -1,16 +1,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="ViewModel"
+            name="viewModel"
             type="com.quokkaman.android.app.ui.alarm.edit.AlarmEditViewModel" />
-
-        <variable
-            name="planViewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmPlanViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,17 +35,32 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/item_alarm_padding"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/item_alarm_padding">
 
                 <include
                     layout="@layout/item_edit_alarm_plan"
-                    app:alarmPlanViewModel="@{planViewModel}"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:plan="@{viewModel.planLiveData}"
+                    app:viewModel="@{viewModel}" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/alarm_title" />
+
+                <include
+                    layout="@layout/item_edit_alarm_setting_switch"
+                    app:setting="@{viewModel.alarmSoundSettingLiveData}" />
+
+                <include
+                    layout="@layout/item_edit_alarm_setting_switch"
+                    app:setting="@{viewModel.alarmVibrateSettingLiveData}" />
+
+                <include
+                    layout="@layout/item_edit_alarm_setting_switch"
+                    app:setting="@{viewModel.alarmRepeatSettingLiveData}" />
             </LinearLayout>
         </ScrollView>
 

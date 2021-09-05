@@ -9,12 +9,16 @@ import com.quokkaman.android.app.databinding.ActivityAlarmEditBinding
 
 class AlarmEditActivity : AppCompatActivity() {
 
+
+    private lateinit var viewModel : AlarmEditViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityAlarmEditBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_alarm_edit)
-        binding.viewModel = ViewModelProvider(this).get(AlarmEditViewModel::class.java)
-        binding.planViewModel = ViewModelProvider(this).get(AlarmPlanViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AlarmEditViewModel::class.java)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
     }
 
     companion object {
