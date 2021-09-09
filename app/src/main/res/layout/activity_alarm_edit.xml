@@ -6,6 +6,10 @@
         <variable
             name="viewModel"
             type="com.quokkaman.android.app.ui.alarm.edit.AlarmEditViewModel" />
+
+        <variable
+            name="planViewModel"
+            type="com.quokkaman.android.app.ui.alarm.edit.AlarmPlanViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,8 +46,7 @@
                     layout="@layout/item_edit_alarm_plan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:plan="@{viewModel.planLiveData}"
-                    app:viewModel="@{viewModel}" />
+                    app:viewModel="@{planViewModel}" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
