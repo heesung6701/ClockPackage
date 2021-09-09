@@ -1,21 +1,35 @@
 package com.quokkaman.android.app.ui.alarm.edit
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import android.app.DatePickerDialog
+import androidx.lifecycle.*
 import com.quokkaman.android.app.common.data.AlarmDatePlan
 import com.quokkaman.android.app.common.data.AlarmDayPlan
 import com.quokkaman.android.app.common.data.AlarmPlan
 import com.quokkaman.android.app.common.data.DayOfWeek
 import java.util.*
 
-class AlarmPlanViewModel : ViewModel() {
+
+class AlarmPlanViewModel(val openDatePickerDialog: (DatePickerDialog.OnDateSetListener, Int, Int, Int) -> Unit) :
+    ViewModel() {
 
     val planLiveData = MutableLiveData<AlarmPlan>().apply { value = AlarmDatePlan(Date()) }
 
     fun clickDate() {
         val alarmDatePlan = AlarmDatePlan(Date())
+        val calendar = Calendar.getInstance(Locale.KOREA)
+
+        openDatePickerDialog(
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, monthOfYear)
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                planLiveData.value = AlarmDatePlan(calendar.time)
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+
         planLiveData.postValue(alarmDatePlan)
     }
 
@@ -42,5 +56,12 @@ class AlarmPlanViewModel : ViewModel() {
                 plan.contains(dayOfWeek)
             }
         }
+    }
+
+    class AlarmPlanViewModelFactory(private val openDatePickerDialog: (DatePickerDialog.OnDateSetListener, Int, Int, Int) -> Unit) :
+        ViewModelProvider.Factory {
+
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+            AlarmPlanViewModel(openDatePickerDialog) as T
     }
 }
