@@ -34,6 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:timePickerMode="spinner"
+            onUpdateTime="@{viewModel.updateTime}"
+            setTime="@{viewModel.timeLiveData}"
             app:layout_constraintBottom_toTopOf="@id/scrollview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +65,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@={viewModel.titleLiveData}"
                     android:hint="@string/alarm_title" />
 
                 <include
