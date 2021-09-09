@@ -4,22 +4,20 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.quokkaman.android.app.R
-import com.quokkaman.android.app.common.data.Alarm
-import com.quokkaman.android.app.common.data.AlarmRepeat
-import com.quokkaman.android.app.common.data.AlarmSound
-import com.quokkaman.android.app.common.data.AlarmVibrate
+import com.quokkaman.android.app.common.data.*
 import com.quokkaman.android.app.databinding.ActivityAlarmEditBinding
 import com.quokkaman.android.app.ui.repeat.RepeatSettingActivity
 import com.quokkaman.android.app.ui.sound.SoundSettingActivity
 import com.quokkaman.android.app.ui.vibrate.VibrateSettingActivity
 import java.util.*
 
-class AlarmEditActivity : AppCompatActivity() {
+class AlarmEditActivity : AppCompatActivity(), AlarmEditPresenter {
 
     private lateinit var viewModel: AlarmEditViewModel
     private lateinit var planViewModel: AlarmPlanViewModel
@@ -35,35 +33,7 @@ class AlarmEditActivity : AppCompatActivity() {
             }
         }
 
-    private val editViewModelFactory = AlarmEditViewModel.Factory { time, name ->
-        val plan = planViewModel.planLiveData.value
-        val sound: AlarmSound =
-            (soundSettingViewModel.settingLiveData.value ?: AlarmSound(
-                false,
-                "",
-                1.0f
-            )) as AlarmSound
-        val repeat: AlarmRepeat =
-            (repeatSettingViewModel.settingLiveData.value ?: AlarmRepeat(
-                false,
-                0,
-                0
-            )) as AlarmRepeat
-        val vibrate: AlarmVibrate =
-            (vibrateSettingViewModel.settingLiveData.value ?: AlarmVibrate(
-                false,
-                AlarmVibrate.Type.None
-            )) as AlarmVibrate
-        Alarm(
-            time = time,
-            name = name,
-            plan = plan,
-            soundSetting = sound,
-            repeatSetting = repeat,
-            vibrateSetting = vibrate,
-            activate = true
-        )
-    }
+    private val editViewModelFactory = AlarmEditViewModel.Factory(this)
 
     private val soundLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -106,6 +76,40 @@ class AlarmEditActivity : AppCompatActivity() {
         binding.soundSettingViewModel = soundSettingViewModel
         binding.vibrateSettingViewModel = vibrateSettingViewModel
         binding.lifecycleOwner = this
+    }
+
+    override fun generateAlarm(time: Time, name: String): Alarm {
+        val plan = planViewModel.planLiveData.value
+        val sound: AlarmSound =
+            (soundSettingViewModel.settingLiveData.value ?: AlarmSound(
+                false,
+                "",
+                1.0f
+            )) as AlarmSound
+        val repeat: AlarmRepeat =
+            (repeatSettingViewModel.settingLiveData.value ?: AlarmRepeat(
+                false,
+                0,
+                0
+            )) as AlarmRepeat
+        val vibrate: AlarmVibrate =
+            (vibrateSettingViewModel.settingLiveData.value ?: AlarmVibrate(
+                false,
+                AlarmVibrate.Type.None
+            )) as AlarmVibrate
+        return Alarm(
+            time = time,
+            name = name,
+            plan = plan,
+            soundSetting = sound,
+            repeatSetting = repeat,
+            vibrateSetting = vibrate,
+            activate = true
+        )
+    }
+
+    override fun makeToast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
     private fun initViewModel() {
