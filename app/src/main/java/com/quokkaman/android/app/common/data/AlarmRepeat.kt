@@ -1,6 +1,6 @@
 package com.quokkaman.android.app.common.data
 
-data class AlarmRepeat(override val active: Boolean, val interval: Int, val repeat: Int) :
+data class AlarmRepeat(override var active: Boolean, val interval: Int, val repeat: Int) :
     AlarmSetting(active) {
     override fun getTitle(): String = "다시 울림"
 

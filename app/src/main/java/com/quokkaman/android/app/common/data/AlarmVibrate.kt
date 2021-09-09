@@ -1,6 +1,6 @@
 package com.quokkaman.android.app.common.data
 
-data class AlarmVibrate(override val active: Boolean, val type: Type) : AlarmSetting(active) {
+data class AlarmVibrate(override var active: Boolean, val type: Type) : AlarmSetting(active) {
     
     override fun getTitle(): String = "진동"
 
