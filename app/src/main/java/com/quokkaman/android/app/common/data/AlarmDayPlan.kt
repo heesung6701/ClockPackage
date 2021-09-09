@@ -3,7 +3,7 @@ package com.quokkaman.android.app.common.data
 import java.util.*
 
 class AlarmDayPlan(
-    public val daySet: EnumSet<DayOfWeek>,
+    private val daySet: EnumSet<DayOfWeek>,
     private val offOnHoliday: Boolean = false
 ) : AlarmPlan {
     override fun valid(date: Date): Boolean {
@@ -18,7 +18,7 @@ class AlarmDayPlan(
         if (daySet.size == 7) {
             return "매일"
         }
-        return daySet.joinToString(", ") { it.dayStr }
+        return "매주 " + daySet.joinToString(", ") { it.dayStr }
     }
 
     fun contains(dayOfWeek: DayOfWeek): Boolean {
