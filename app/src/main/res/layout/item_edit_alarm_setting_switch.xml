@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmSettingViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

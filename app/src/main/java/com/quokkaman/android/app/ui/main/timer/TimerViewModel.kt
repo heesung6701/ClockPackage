@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.timer
+package com.quokkaman.android.app.ui.main.timer
 
 import androidx.lifecycle.ViewModel
 

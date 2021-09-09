@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.alarm.edit
+package com.quokkaman.android.app.ui.edit
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -13,7 +13,6 @@ import com.quokkaman.android.app.databinding.ActivityAlarmEditBinding
 import java.util.*
 
 class AlarmEditActivity : AppCompatActivity() {
-
 
     private lateinit var viewModel: AlarmEditViewModel
     private lateinit var planViewModel: AlarmPlanViewModel

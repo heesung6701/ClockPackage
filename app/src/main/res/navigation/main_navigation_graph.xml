@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_alarm"
-        android:name="com.quokkaman.android.app.ui.alarm.AlarmFragment"
+        android:name="com.quokkaman.android.app.ui.main.alarm.AlarmFragment"
         android:label="@string/alarm"
         tools:layout="@layout/alarm_fragment"
         />
 
     <fragment
         android:id="@+id/navigation_world_clock"
-        android:name="com.quokkaman.android.app.ui.world.WorldClockFragment"
+        android:name="com.quokkaman.android.app.ui.main.world.WorldClockFragment"
         android:label="@string/world_clock"
         tools:layout="@layout/world_clock_fragment"
         />
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/navigation_stopwatch"
-        android:name="com.quokkaman.android.app.ui.stopwatch.StopWatchFragment"
+        android:name="com.quokkaman.android.app.ui.main.stopwatch.StopWatchFragment"
         android:label="@string/stop_watch"
         tools:layout="@layout/stop_watch_fragment"
         />
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/navigation_timer"
-        android:name="com.quokkaman.android.app.ui.timer.TimerFragment"
+        android:name="com.quokkaman.android.app.ui.main.timer.TimerFragment"
         android:label="@string/timer"
         tools:layout="@layout/timer_fragment"
         />

@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.stopwatch
+package com.quokkaman.android.app.ui.main.timer
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.quokkaman.android.app.R
 
-class StopWatchFragment : Fragment() {
+class TimerFragment : Fragment() {
 
     companion object {
-        fun newInstance() = StopWatchFragment()
+        fun newInstance() = TimerFragment()
     }
 
-    private lateinit var viewModel: StopWatchViewModel
+    private lateinit var viewModel: TimerViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.stop_watch_fragment, container, false)
+        return inflater.inflate(R.layout.timer_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StopWatchViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
         // TODO: Use the ViewModel
     }
+
 }

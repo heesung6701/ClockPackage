@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.alarm.edit
+package com.quokkaman.android.app.ui.edit
 
 import androidx.lifecycle.MutableLiveData
 import com.quokkaman.android.app.common.data.AlarmSetting

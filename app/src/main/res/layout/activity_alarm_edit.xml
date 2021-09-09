@@ -5,23 +5,23 @@
 
         <variable
             name="viewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmEditViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmEditViewModel" />
 
         <variable
             name="planViewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmPlanViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmPlanViewModel" />
 
         <variable
             name="soundSettingViewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmSettingViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
 
         <variable
             name="repeatSettingViewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmSettingViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
 
         <variable
             name="vibrateSettingViewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmSettingViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

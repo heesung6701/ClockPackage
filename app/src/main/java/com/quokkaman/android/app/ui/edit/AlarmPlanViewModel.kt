@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.alarm.edit
+package com.quokkaman.android.app.ui.edit
 
 import android.app.DatePickerDialog
 import androidx.lifecycle.*

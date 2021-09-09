@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.alarm
+package com.quokkaman.android.app.ui.main.alarm
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

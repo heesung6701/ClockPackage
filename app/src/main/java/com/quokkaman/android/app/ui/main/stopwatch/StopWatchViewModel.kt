@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.stopwatch
+package com.quokkaman.android.app.ui.main.stopwatch
 
 import androidx.lifecycle.ViewModel
 
