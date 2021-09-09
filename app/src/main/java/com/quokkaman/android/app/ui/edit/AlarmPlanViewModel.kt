@@ -55,7 +55,7 @@ class AlarmPlanViewModel(val openDatePickerDialog: (DatePickerDialog.OnDateSetLi
         }
     }
 
-    class AlarmPlanViewModelFactory(private val openDatePickerDialog: (DatePickerDialog.OnDateSetListener, Int, Int, Int) -> Unit) :
+    class Factory(private val openDatePickerDialog: (DatePickerDialog.OnDateSetListener, Int, Int, Int) -> Unit) :
         ViewModelProvider.Factory {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T =

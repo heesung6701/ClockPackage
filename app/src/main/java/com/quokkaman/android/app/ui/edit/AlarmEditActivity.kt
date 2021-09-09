@@ -27,7 +27,7 @@ class AlarmEditActivity : AppCompatActivity() {
     private lateinit var vibrateSettingViewModel: AlarmSettingViewModel
 
     private val planViewModelFactory =
-        AlarmPlanViewModel.AlarmPlanViewModelFactory { listener, year, monthOfYear, dayOfMonth ->
+        AlarmPlanViewModel.Factory { listener, year, monthOfYear, dayOfMonth ->
             DatePickerDialog(this, listener, year, monthOfYear, dayOfMonth).apply {
                 datePicker.minDate = Calendar.getInstance(Locale.KOREA).timeInMillis
                 show()
