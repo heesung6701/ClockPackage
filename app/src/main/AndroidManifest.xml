@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClockPackage">
+        <activity android:name=".ui.repeat.RepeatSettingActivity"></activity>
+        <activity android:name=".ui.vibrate.VibrateSettingActivity" />
+        <activity android:name=".ui.sound.SoundSettingActivity" />
         <activity
-            android:name="com.quokkaman.android.app.ui.edit.AlarmEditActivity"
+            android:name=".ui.edit.AlarmEditActivity"
             android:label="@string/title_activity_alarm_detail" />
         <activity
             android:name=".ui.main.MainActivity"

@@ -1,12 +1,22 @@
 package com.quokkaman.android.app.common.data
 
-data class AlarmVibrate(override var active: Boolean, val type: Type) : AlarmSetting(active) {
-    
+import android.os.Parcel
+import android.os.Parcelable
+
+data class AlarmVibrate(override var active: Boolean, val type: Type) : AlarmSetting(active), Parcelable {
+
+    constructor(parcel: Parcel) : this(
+        parcel.readByte() != 0.toByte(),
+        Type.valueOf(parcel.readString()?:"")
+    ) {
+    }
+
     override fun getTitle(): String = "진동"
 
     override fun getSummaryOn(): String = type.name
     
-    public enum class Type(name: String) {
+    enum class Type(name: String) {
+        None(""),
         BasicCall("Basic call"),
         Heartbeat("Heartbeat"),
         Ticktock("Ticktock"),
@@ -24,6 +34,25 @@ data class AlarmVibrate(override var active: Boolean, val type: Type) : AlarmSet
         Gallop("Gallop"),
         Shuffle("shuffle"),
         Spring("Spring");
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeByte(if (active) 1 else 0)
+        parcel.writeString(type.name)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<AlarmVibrate> {
+        override fun createFromParcel(parcel: Parcel): AlarmVibrate {
+            return AlarmVibrate(parcel)
+        }
+
+        override fun newArray(size: Int): Array<AlarmVibrate?> {
+            return arrayOfNulls(size)
+        }
     }
 }
 
