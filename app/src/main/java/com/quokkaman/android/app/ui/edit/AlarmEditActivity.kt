@@ -35,14 +35,45 @@ class AlarmEditActivity : AppCompatActivity() {
             }
         }
 
-    private val soundLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent = result.data ?: return@registerForActivityResult
-            val vibrate =
-                data.getParcelableExtra<AlarmSound>("") ?: return@registerForActivityResult
-            soundSettingViewModel.settingLiveData.value = vibrate
-        }
+    private val editViewModelFactory = AlarmEditViewModel.Factory { time, name ->
+        val plan = planViewModel.planLiveData.value
+        val sound: AlarmSound =
+            (soundSettingViewModel.settingLiveData.value ?: AlarmSound(
+                false,
+                "",
+                1.0f
+            )) as AlarmSound
+        val repeat: AlarmRepeat =
+            (repeatSettingViewModel.settingLiveData.value ?: AlarmRepeat(
+                false,
+                0,
+                0
+            )) as AlarmRepeat
+        val vibrate: AlarmVibrate =
+            (vibrateSettingViewModel.settingLiveData.value ?: AlarmVibrate(
+                false,
+                AlarmVibrate.Type.None
+            )) as AlarmVibrate
+        Alarm(
+            time = time,
+            name = name,
+            plan = plan,
+            soundSetting = sound,
+            repeatSetting = repeat,
+            vibrateSetting = vibrate,
+            activate = true
+        )
     }
+
+    private val soundLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent = result.data ?: return@registerForActivityResult
+                val vibrate =
+                    data.getParcelableExtra<AlarmSound>("") ?: return@registerForActivityResult
+                soundSettingViewModel.settingLiveData.value = vibrate
+            }
+        }
 
     private val vibrateLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -78,7 +109,7 @@ class AlarmEditActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(AlarmEditViewModel::class.java)
+        viewModel = ViewModelProvider(this, editViewModelFactory).get(AlarmEditViewModel::class.java)
         planViewModel =
             ViewModelProvider(this, planViewModelFactory).get(AlarmPlanViewModel::class.java)
         soundSettingViewModel = AlarmSettingViewModel {
