@@ -15,7 +15,6 @@ class AlarmPlanViewModel(val openDatePickerDialog: (DatePickerDialog.OnDateSetLi
     val planLiveData = MutableLiveData<AlarmPlan>().apply { value = AlarmDatePlan(Date()) }
 
     fun clickDate() {
-        val alarmDatePlan = AlarmDatePlan(Date())
         val calendar = Calendar.getInstance(Locale.KOREA)
 
         openDatePickerDialog(
@@ -29,8 +28,6 @@ class AlarmPlanViewModel(val openDatePickerDialog: (DatePickerDialog.OnDateSetLi
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
-
-        planLiveData.postValue(alarmDatePlan)
     }
 
     fun clickDay(dayOfWeek: DayOfWeek) {

@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.quokkaman.android.app.R
 import com.quokkaman.android.app.databinding.ActivityAlarmEditBinding
+import java.util.*
 
 class AlarmEditActivity : AppCompatActivity() {
 
@@ -16,7 +17,10 @@ class AlarmEditActivity : AppCompatActivity() {
 
     private val planViewModelFactory =
         AlarmPlanViewModel.AlarmPlanViewModelFactory { listener, year, monthOfYear, dayOfMonth ->
-            DatePickerDialog(this, listener, year, monthOfYear, dayOfMonth).show()
+            DatePickerDialog(this, listener, year, monthOfYear, dayOfMonth).apply {
+                datePicker.minDate = Calendar.getInstance(Locale.KOREA).timeInMillis
+                show()
+            }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
