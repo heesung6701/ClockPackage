@@ -9,8 +9,7 @@ data class AlarmRepeat(override var active: Boolean, val interval: Int, val repe
         parcel.readByte() != 0.toByte(),
         parcel.readInt(),
         parcel.readInt()
-    ) {
-    }
+    )
 
     override fun getTitle(): String = "다시 울림"
 

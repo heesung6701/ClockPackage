@@ -8,8 +8,7 @@ data class AlarmVibrate(override var active: Boolean, val type: Type) : AlarmSet
     constructor(parcel: Parcel) : this(
         parcel.readByte() != 0.toByte(),
         Type.valueOf(parcel.readString()?:"")
-    ) {
-    }
+    )
 
     override fun getTitle(): String = "진동"
 

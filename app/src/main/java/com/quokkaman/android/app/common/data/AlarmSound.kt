@@ -8,8 +8,7 @@ data class AlarmSound(override var active: Boolean, val name: String, val volume
         parcel.readByte() != 0.toByte(),
         parcel.readString()?:"",
         parcel.readFloat()
-    ) {
-    }
+    )
 
     override fun getTitle(): String = "알람음"
 

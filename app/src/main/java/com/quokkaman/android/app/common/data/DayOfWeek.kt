@@ -2,7 +2,7 @@ package com.quokkaman.android.app.common.data
 
 import java.util.*
 
-enum class DayOfWeek private constructor(val day: Int, val dayStr: String) {
+enum class DayOfWeek(val day: Int, val dayStr: String) {
     MONDAY(Calendar.MONDAY, "월"),
     TUESDAY(Calendar.TUESDAY, "화"),
     WEDNESDAY(Calendar.WEDNESDAY, "수"),

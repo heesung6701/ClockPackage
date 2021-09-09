@@ -25,20 +25,12 @@ class AlarmDayPlan(
         return daySet.contains(dayOfWeek)
     }
 
-    fun add(dayOfWeek: DayOfWeek) {
-        daySet.add(dayOfWeek)
-    }
-
-    fun remove(dayOfWeek: DayOfWeek) {
-        daySet.remove(dayOfWeek)
-    }
-
     fun toggle(dayOfWeek: DayOfWeek) {
         dayOfWeek.run {
             if (contains(this)) {
-                remove(this)
+                daySet.remove(this)
             } else {
-                add(this)
+                daySet.add(this)
             }
         }
     }
