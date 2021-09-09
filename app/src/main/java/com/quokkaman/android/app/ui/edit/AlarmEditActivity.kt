@@ -9,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.quokkaman.android.app.R
+import com.quokkaman.android.app.common.data.Alarm
 import com.quokkaman.android.app.common.data.AlarmRepeat
-import com.quokkaman.android.app.common.data.AlarmSetting
 import com.quokkaman.android.app.common.data.AlarmSound
 import com.quokkaman.android.app.common.data.AlarmVibrate
 import com.quokkaman.android.app.databinding.ActivityAlarmEditBinding
+import com.quokkaman.android.app.ui.repeat.RepeatSettingActivity
 import com.quokkaman.android.app.ui.sound.SoundSettingActivity
 import com.quokkaman.android.app.ui.vibrate.VibrateSettingActivity
 import java.util.*
@@ -94,16 +95,16 @@ class AlarmEditActivity : AppCompatActivity() {
             repeatLauncher.launch(
                 Intent(
                     this,
-                    VibrateSettingActivity::class.java
+                    RepeatSettingActivity::class.java
                 )
             )
         }.apply {
-            settingLiveData.value = AlarmVibrate(false, AlarmVibrate.Type.BasicCall)
+            settingLiveData.value = AlarmRepeat(false, 1, 3)
         }
         vibrateSettingViewModel = AlarmSettingViewModel {
             vibrateLauncher.launch(Intent(this, VibrateSettingActivity::class.java))
         }.apply {
-            settingLiveData.value = AlarmRepeat(false, 1, 3)
+            settingLiveData.value = AlarmVibrate(false, AlarmVibrate.Type.BasicCall)
         }
     }
     companion object {
