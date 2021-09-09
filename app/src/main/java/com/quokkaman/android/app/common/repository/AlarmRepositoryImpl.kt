@@ -9,7 +9,6 @@ class AlarmRepositoryImpl : AlarmRepository {
             .map { idx ->
                 Alarm(name = "name$idx",
                     time = Time.create(idx.toShort().coerceIn(0, 23), (Math.random() * 100).toInt().toShort().coerceIn(0, 59)),
-                    date = null,
                     plan = AlarmDayPlan(EnumSet.of(DayOfWeek.values()[(Math.random() * 100).toInt() % 7])),
                     activate = false,
                     repeatSetting = AlarmRepeat(false, 5, 3),
