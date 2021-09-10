@@ -20,4 +20,19 @@
     <string name="world_clock">세계시각</string>
     <string name="stop_watch">스탑워치</string>
     <string name="timer">타이머</string>
+    <string name="title_activity_alarm_detail">AlarmDetailActivity</string>
+
+    <string name="none_use">사용 안함</string>
+    <string name="alarm_sound">알람음</string>
+    <string name="alarm_sound_summary_on">굿모닝 캔자스 (Feat. 다원)</string>
+    <string name="alarm_sound_summary_off">@string/none_use</string>
+    <string name="alarm_vibrate">진동</string>
+    <string name="alarm_vibrate_summary_on">Basic call</string>
+    <string name="alarm_vibrate_summary_off">@string/none_use</string>
+    <string name="alarm_repeat">다시울림</string>
+    <string name="alarm_repeat_summary_on">5분, 3회</string>
+    <string name="alarm_repeat_summary_off">@string/none_use</string>
+    <string name="alarm_title">알람 이름</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
 </resources>

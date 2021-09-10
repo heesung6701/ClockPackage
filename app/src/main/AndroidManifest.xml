@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClockPackage">
         <activity
+            android:name=".ui.alarm.edit.AlarmEditActivity"
+            android:label="@string/title_activity_alarm_detail"></activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

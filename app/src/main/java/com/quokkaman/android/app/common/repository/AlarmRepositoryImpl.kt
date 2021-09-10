@@ -12,9 +12,9 @@ class AlarmRepositoryImpl : AlarmRepository {
                     date = null,
                     plan = AlarmDayPlan(EnumSet.of(DayOfWeek.values()[(Math.random() * 100).toInt() % 7])),
                     activate = false,
-                    scheduleSetting = AlarmSetting(false, null),
-                    soundSetting = AlarmSetting(false, null),
-                    vibrateSetting = AlarmSetting(false, null)
+                    repeatSetting = AlarmRepeat(false, 5, 3),
+                    soundSetting = AlarmSound(false, "" /* TODO sound default 값 적ㅇㅇ*/, 0.8f),
+                    vibrateSetting = AlarmVibrate(false, AlarmVibrate.Type.BasicCall)
                 )
             }
     }

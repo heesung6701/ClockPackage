@@ -30,5 +30,6 @@ class AlarmFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
         binding.alarmViewModel = viewModel
+        binding.lifecycleOwner = this
     }
 }

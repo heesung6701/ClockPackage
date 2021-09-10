@@ -12,4 +12,8 @@
     <dimen name="alarm_list_item_date_text_size">8sp</dimen>
     <dimen name="app_bar_height">140dp</dimen>
     <dimen name="bnv_height">48dp</dimen>
+    <dimen name="item_switch_title_text_size">14sp</dimen>
+    <dimen name="item_switch_summary_text_size">10sp</dimen>
+    <dimen name="item_alarm_plan_padding">8dp</dimen>
+    <dimen name="item_alarm_padding">8dp</dimen>
 </resources>
