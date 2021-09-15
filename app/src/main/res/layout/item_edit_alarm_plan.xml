@@ -55,8 +55,8 @@
 
             <TextView
                 android:id="@+id/mon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.MONDAY)}"
                 android:text="@string/day_mon_str"
@@ -69,8 +69,8 @@
 
             <TextView
                 android:id="@+id/tue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.TUESDAY)}"
                 android:text="@string/day_tue_str"
@@ -83,8 +83,8 @@
 
             <TextView
                 android:id="@+id/wed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.WEDNESDAY)}"
                 android:text="@string/day_wed_str"
@@ -97,8 +97,8 @@
 
             <TextView
                 android:id="@+id/thu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.THURSDAY)}"
                 android:text="@string/day_thu_str"
@@ -111,8 +111,8 @@
 
             <TextView
                 android:id="@+id/fri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.FRIDAY)}"
                 android:text="@string/day_fri_str"
@@ -125,8 +125,8 @@
 
             <TextView
                 android:id="@+id/sat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.SATURDAY)}"
                 android:text="@string/day_sat_str"
@@ -139,8 +139,8 @@
 
             <TextView
                 android:id="@+id/sun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.SUNDAY)}"
                 android:text="@string/day_sun_str"
