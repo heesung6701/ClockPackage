@@ -5,20 +5,21 @@
     <data>
 
         <variable
-            name="setting"
-            type="com.quokkaman.android.app.common.data.AlarmSetting" />
+            name="viewModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:onClick="@{() -> viewModel.onClick()}">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/item_switch_title_text_size"
-            android:text="@{setting.title}"
+            android:text="@{viewModel.settingLiveData.title}"
             app:layout_constraintBottom_toTopOf="@id/summary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/item_switch_summary_text_size"
-            android:text="@{setting.summary}"
+            android:text="@{viewModel.settingLiveData.summary}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
@@ -52,7 +53,8 @@
             android:id="@+id/switchWidget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="@{setting.active}"
+            android:checked="@{viewModel.settingLiveData.active}"
+            android:onClick="@{() -> viewModel.toggle()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

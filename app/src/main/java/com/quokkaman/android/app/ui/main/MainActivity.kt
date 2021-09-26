@@ -1,4 +1,4 @@
-package com.quokkaman.android.app
+package com.quokkaman.android.app.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,8 +15,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.quokkaman.android.app.R
 import com.quokkaman.android.app.databinding.ActivityMainBinding
-import com.quokkaman.android.app.ui.alarm.edit.AlarmEditActivity
+import com.quokkaman.android.app.ui.edit.AlarmEditActivity
 
 class MainActivity : AppCompatActivity() {
 

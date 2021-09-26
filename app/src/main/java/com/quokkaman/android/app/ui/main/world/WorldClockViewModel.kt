@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.world
+package com.quokkaman.android.app.ui.main.world
 
 import androidx.lifecycle.ViewModel
 

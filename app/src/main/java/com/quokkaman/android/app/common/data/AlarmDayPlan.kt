@@ -18,29 +18,19 @@ class AlarmDayPlan(
         if (daySet.size == 7) {
             return "매일"
         }
-        return daySet.joinToString(", ") { it.dayStr }
+        return "매주 " + daySet.joinToString(", ") { it.dayStr }
     }
-
-    override fun isDay(dayOfWeek: DayOfWeek): Boolean = contains(dayOfWeek)
 
     fun contains(dayOfWeek: DayOfWeek): Boolean {
         return daySet.contains(dayOfWeek)
     }
 
-    fun add(dayOfWeek: DayOfWeek) {
-        daySet.add(dayOfWeek)
-    }
-
-    fun remove(dayOfWeek: DayOfWeek) {
-        daySet.remove(dayOfWeek)
-    }
-
     fun toggle(dayOfWeek: DayOfWeek) {
         dayOfWeek.run {
             if (contains(this)) {
-                remove(this)
+                daySet.remove(this)
             } else {
-                add(this)
+                daySet.add(this)
             }
         }
     }

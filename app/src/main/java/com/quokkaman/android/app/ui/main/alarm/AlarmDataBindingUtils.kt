@@ -1,11 +1,10 @@
-package com.quokkaman.android.app.ui.alarm
+package com.quokkaman.android.app.ui.main.alarm
 
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.quokkaman.android.app.R
 import com.quokkaman.android.app.common.data.Alarm

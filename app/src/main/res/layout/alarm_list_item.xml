@@ -139,7 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="@{alarm.date.toString()}"
+            android:text="@{alarm.plan.title}"
             android:visibility="@{alarm.plan instanceof AlarmDatePlan ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/alarm_list_item_control_layout"

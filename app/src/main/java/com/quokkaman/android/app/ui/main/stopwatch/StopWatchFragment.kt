@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.world
+package com.quokkaman.android.app.ui.main.stopwatch
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,25 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.quokkaman.android.app.R
 
-class WorldClockFragment : Fragment() {
+class StopWatchFragment : Fragment() {
 
     companion object {
-        fun newInstance() = WorldClockFragment()
+        fun newInstance() = StopWatchFragment()
     }
 
-    private lateinit var viewModel: WorldClockViewModel
+    private lateinit var viewModel: StopWatchViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.world_clock_fragment, container, false)
+        return inflater.inflate(R.layout.stop_watch_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(WorldClockViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(StopWatchViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }

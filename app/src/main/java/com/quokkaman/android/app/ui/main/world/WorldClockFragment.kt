@@ -1,4 +1,4 @@
-package com.quokkaman.android.app.ui.timer
+package com.quokkaman.android.app.ui.main.world
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.quokkaman.android.app.R
 
-class TimerFragment : Fragment() {
+class WorldClockFragment : Fragment() {
 
     companion object {
-        fun newInstance() = TimerFragment()
+        fun newInstance() = WorldClockFragment()
     }
 
-    private lateinit var viewModel: TimerViewModel
+    private lateinit var viewModel: WorldClockViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.timer_fragment, container, false)
+        return inflater.inflate(R.layout.world_clock_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(WorldClockViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

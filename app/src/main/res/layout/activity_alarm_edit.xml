@@ -5,7 +5,23 @@
 
         <variable
             name="viewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmEditViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmEditViewModel" />
+
+        <variable
+            name="planViewModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmPlanViewModel" />
+
+        <variable
+            name="soundSettingViewModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
+
+        <variable
+            name="repeatSettingViewModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
+
+        <variable
+            name="vibrateSettingViewModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:timePickerMode="spinner"
+            onUpdateTime="@{viewModel.updateTime}"
+            setTime="@{viewModel.timeLiveData}"
             app:layout_constraintBottom_toTopOf="@id/scrollview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,25 +60,25 @@
                     layout="@layout/item_edit_alarm_plan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:plan="@{viewModel.planLiveData}"
-                    app:viewModel="@{viewModel}" />
+                    app:viewModel="@{planViewModel}" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@={viewModel.titleLiveData}"
                     android:hint="@string/alarm_title" />
 
                 <include
                     layout="@layout/item_edit_alarm_setting_switch"
-                    app:setting="@{viewModel.alarmSoundSettingLiveData}" />
+                    app:viewModel="@{soundSettingViewModel}" />
 
                 <include
                     layout="@layout/item_edit_alarm_setting_switch"
-                    app:setting="@{viewModel.alarmVibrateSettingLiveData}" />
+                    app:viewModel="@{vibrateSettingViewModel}" />
 
                 <include
                     layout="@layout/item_edit_alarm_setting_switch"
-                    app:setting="@{viewModel.alarmRepeatSettingLiveData}" />
+                    app:viewModel="@{repeatSettingViewModel}" />
             </LinearLayout>
         </ScrollView>
 
@@ -79,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onCancel()}"
                 android:text="@string/cancel" />
 
             <Button
@@ -87,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onSave()}"
                 android:text="@string/save" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

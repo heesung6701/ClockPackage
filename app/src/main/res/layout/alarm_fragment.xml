@@ -7,7 +7,7 @@
 
         <variable
             name="alarmViewModel"
-            type="com.quokkaman.android.app.ui.alarm.AlarmViewModel" />
+            type="com.quokkaman.android.app.ui.main.alarm.AlarmViewModel" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.alarm.AlarmFragment">
+        tools:context=".ui.main.alarm.AlarmFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             setAlarmList="@{alarmViewModel.alarmListLiveData}"

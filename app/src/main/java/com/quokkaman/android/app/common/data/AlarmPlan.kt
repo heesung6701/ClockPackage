@@ -5,5 +5,4 @@ import java.util.*
 interface AlarmPlan {
     fun valid(date: Date): Boolean
     fun getTitle(): String
-    fun isDay(dayOfWeek: DayOfWeek): Boolean
 }

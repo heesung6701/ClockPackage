@@ -2,7 +2,7 @@ package com.quokkaman.android.app.common.data
 
 import java.lang.RuntimeException
 
-data class Time private constructor(val hour: Short, val minute: Short) {
+class Time private constructor(val hour: Short, val minute: Short) {
 
     override fun toString(): String {
         return "${if(hour > 12) hour - 12 else hour}:$minute"

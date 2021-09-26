@@ -12,15 +12,13 @@
 
         <import type="com.quokkaman.android.app.common.data.DayOfWeek" />
 
+        <import type="java.util.function.Predicate" />
+
         <import type="android.view.View" />
 
         <variable
-            name="plan"
-            type="AlarmPlan" />
-
-        <variable
             name="viewModel"
-            type="com.quokkaman.android.app.ui.alarm.edit.AlarmEditViewModel" />
+            type="com.quokkaman.android.app.ui.edit.AlarmPlanViewModel" />
 
     </data>
 
@@ -39,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{plan.title}"
+                android:text="@{viewModel.planLiveData.title}"
                 tools:text="내일-9월5일(일)" />
 
             <ImageButton
@@ -57,13 +55,13 @@
 
             <TextView
                 android:id="@+id/mon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.MONDAY)}"
                 android:text="@string/day_mon_str"
-                android:textColor="@{plan.isDay(DayOfWeek.MONDAY) ? @color/grey : @android:color/tab_indicator_text}"
-                android:background="@{plan.isDay(DayOfWeek.MONDAY) ? @drawable/shape_circle : null}"
+                android:textColor="@{viewModel.makeIsDayLiveData(DayOfWeek.MONDAY) ? @color/grey : @android:color/tab_indicator_text}"
+                android:background="@{viewModel.makeIsDayLiveData(DayOfWeek.MONDAY) ? @drawable/shape_circle : null}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tue"
@@ -71,13 +69,13 @@
 
             <TextView
                 android:id="@+id/tue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.TUESDAY)}"
                 android:text="@string/day_tue_str"
-                android:textColor="@{plan.isDay(DayOfWeek.TUESDAY) ? @color/grey : @android:color/tab_indicator_text}"
-                android:background="@{plan.isDay(DayOfWeek.TUESDAY) ? @drawable/shape_circle : null}"
+                android:textColor="@{viewModel.makeIsDayLiveData(DayOfWeek.TUESDAY) ? @color/grey : @android:color/tab_indicator_text}"
+                android:background="@{viewModel.makeIsDayLiveData(DayOfWeek.TUESDAY) ? @drawable/shape_circle : null}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/wed"
@@ -85,13 +83,13 @@
 
             <TextView
                 android:id="@+id/wed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.WEDNESDAY)}"
                 android:text="@string/day_wed_str"
-                android:textColor="@{plan.isDay(DayOfWeek.WEDNESDAY) ? @color/grey : @android:color/tab_indicator_text}"
-                android:background="@{plan.isDay(DayOfWeek.WEDNESDAY) ? @drawable/shape_circle : null}"
+                android:textColor="@{viewModel.makeIsDayLiveData(DayOfWeek.WEDNESDAY) ? @color/grey : @android:color/tab_indicator_text}"
+                android:background="@{viewModel.makeIsDayLiveData(DayOfWeek.WEDNESDAY) ? @drawable/shape_circle : null}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/thu"
@@ -99,13 +97,13 @@
 
             <TextView
                 android:id="@+id/thu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.THURSDAY)}"
                 android:text="@string/day_thu_str"
-                android:textColor="@{plan.isDay(DayOfWeek.THURSDAY) ? @color/grey : @android:color/tab_indicator_text}"
-                android:background="@{plan.isDay(DayOfWeek.THURSDAY) ? @drawable/shape_circle : null}"
+                android:textColor="@{viewModel.makeIsDayLiveData(DayOfWeek.THURSDAY) ? @color/grey : @android:color/tab_indicator_text}"
+                android:background="@{viewModel.makeIsDayLiveData(DayOfWeek.THURSDAY) ? @drawable/shape_circle : null}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/fri"
@@ -113,13 +111,13 @@
 
             <TextView
                 android:id="@+id/fri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.FRIDAY)}"
                 android:text="@string/day_fri_str"
-                android:textColor="@{plan.isDay(DayOfWeek.FRIDAY) ? @color/grey : @android:color/tab_indicator_text}"
-                android:background="@{plan.isDay(DayOfWeek.FRIDAY) ? @drawable/shape_circle : null}"
+                android:textColor="@{viewModel.makeIsDayLiveData(DayOfWeek.FRIDAY) ? @color/grey : @android:color/tab_indicator_text}"
+                android:background="@{viewModel.makeIsDayLiveData(DayOfWeek.FRIDAY) ? @drawable/shape_circle : null}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/sat"
@@ -127,13 +125,13 @@
 
             <TextView
                 android:id="@+id/sat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.SATURDAY)}"
                 android:text="@string/day_sat_str"
-                android:textColor="@{plan.isDay(DayOfWeek.SATURDAY) ? @color/grey : @android:color/holo_blue_dark}"
-                android:background="@{plan.isDay(DayOfWeek.SATURDAY) ? @drawable/shape_circle : null}"
+                android:textColor="@{viewModel.makeIsDayLiveData(DayOfWeek.SATURDAY) ? @color/grey : @android:color/holo_blue_dark}"
+                android:background="@{viewModel.makeIsDayLiveData(DayOfWeek.SATURDAY) ? @drawable/shape_circle : null}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/sun"
@@ -141,13 +139,13 @@
 
             <TextView
                 android:id="@+id/sun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/item_day_width"
+                android:layout_height="@dimen/item_day_height"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.clickDay(DayOfWeek.SUNDAY)}"
                 android:text="@string/day_sun_str"
-                android:textColor="@{plan.isDay(DayOfWeek.SUNDAY) ? @color/grey : @android:color/holo_red_dark}"
-                android:background="@{plan.isDay(DayOfWeek.SUNDAY) ? @drawable/shape_circle : null}"
+                android:textColor="@{viewModel.makeIsDayLiveData(DayOfWeek.SUNDAY) ? @color/grey : @android:color/holo_red_dark}"
+                android:background="@{viewModel.makeIsDayLiveData(DayOfWeek.SUNDAY) ? @drawable/shape_circle : null}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
