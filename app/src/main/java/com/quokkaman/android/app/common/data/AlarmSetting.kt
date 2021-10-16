@@ -13,5 +13,5 @@ abstract class AlarmSetting(open var active: Boolean) {
     }
 
     protected abstract fun getSummaryOn(): String
-    private fun getSummaryOff(): String = "사용 안함"
+    protected open fun getSummaryOff(): String = "사용 안함"
 }

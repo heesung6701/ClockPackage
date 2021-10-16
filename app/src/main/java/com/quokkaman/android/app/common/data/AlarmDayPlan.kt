@@ -4,7 +4,7 @@ import java.util.*
 
 class AlarmDayPlan(
     private val daySet: EnumSet<DayOfWeek>,
-    private val offOnHoliday: Boolean = false
+    var offOnHoliday: Boolean = false
 ) : AlarmPlan {
     override fun valid(date: Date): Boolean {
         val calendar = Calendar.getInstance()

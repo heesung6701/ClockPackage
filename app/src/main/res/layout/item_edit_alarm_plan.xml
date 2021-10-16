@@ -151,5 +151,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/sat" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            layout="@layout/item_edit_setting_switch"
+            app:switchModel="@{viewModel.holidaySwitchModel}"
+            app:setting="@{viewModel.holidaySwitchModel.settingLiveData}"
+            app:enabled="@{viewModel.holidaySwitchModel.enabledLiveData}" />
     </LinearLayout>
 </layout>
