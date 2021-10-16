@@ -5,21 +5,32 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
+            name="enabled"
+            type="boolean" />
+
+        <variable
+            name="setting"
+            type="com.quokkaman.android.app.common.data.AlarmSetting" />
+
+        <variable
+            name="switchModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingSwitchModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick="@{() -> viewModel.onClick()}">
+        android:onClick="@{() -> switchModel.onClick()}">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/item_switch_title_text_size"
-            android:text="@{viewModel.settingLiveData.title}"
+            android:text="@{setting.title}"
+            android:textColor="@color/text_selector"
+            android:enabled="@{enabled}"
             app:layout_constraintBottom_toTopOf="@id/summary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/item_switch_summary_text_size"
-            android:text="@{viewModel.settingLiveData.summary}"
+            android:text="@{setting.summary}"
+            android:textColor="@color/text_selector"
+            android:enabled="@{enabled}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
@@ -53,8 +66,9 @@
             android:id="@+id/switchWidget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="@{viewModel.settingLiveData.active}"
-            android:onClick="@{() -> viewModel.toggle()}"
+            android:checked="@{setting.active}"
+            android:onClick="@{() -> switchModel.toggle()}"
+            android:enabled="@{enabled}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

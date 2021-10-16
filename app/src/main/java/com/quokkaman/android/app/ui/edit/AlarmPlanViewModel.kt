@@ -2,17 +2,36 @@ package com.quokkaman.android.app.ui.edit
 
 import android.app.DatePickerDialog
 import androidx.lifecycle.*
-import com.quokkaman.android.app.common.data.AlarmDatePlan
-import com.quokkaman.android.app.common.data.AlarmDayPlan
-import com.quokkaman.android.app.common.data.AlarmPlan
-import com.quokkaman.android.app.common.data.DayOfWeek
+import com.quokkaman.android.app.common.data.*
 import java.util.*
-
 
 class AlarmPlanViewModel(val openDatePickerDialog: (DatePickerDialog.OnDateSetListener, Int, Int, Int) -> Unit) :
     ViewModel() {
 
-    val planLiveData = MutableLiveData<AlarmPlan>().apply { value = AlarmDatePlan(Date()) }
+    val holidaySwitchModel =
+        object : AlarmSettingSwitchModel(object : AlarmSetting(false) {
+            override fun getTitle(): String = "공휴일엔 알람 끄기"
+
+            override fun getSummaryOn() = "대체 공휴일이나 임시 공휴일 포함 안 함"
+
+            override fun getSummaryOff() = "대체 공휴일이나 임시 공휴일 포함 안 함"
+        }) {
+            override fun onClick() {
+            }
+
+            override fun onActivateChanged(activate: Boolean) {
+                super.onActivateChanged(activate)
+                val plan = planLiveData.value
+                if (plan !is AlarmDayPlan) {
+                    return
+                }
+                plan.offOnHoliday = activate
+            }
+        }
+
+    val planLiveData = MutableLiveData<AlarmPlan>().apply {
+        value = AlarmDatePlan(Date())
+    }
 
     fun clickDate() {
         val calendar = Calendar.getInstance(Locale.KOREA)
@@ -28,6 +47,7 @@ class AlarmPlanViewModel(val openDatePickerDialog: (DatePickerDialog.OnDateSetLi
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
+        holidaySwitchModel.enabledLiveData.value = false
     }
 
     fun clickDay(dayOfWeek: DayOfWeek) {
@@ -43,6 +63,7 @@ class AlarmPlanViewModel(val openDatePickerDialog: (DatePickerDialog.OnDateSetLi
             }
         }
         planLiveData.postValue(alarmPlan)
+        holidaySwitchModel.enabledLiveData.value = alarmPlan is AlarmDayPlan
     }
 
     fun makeIsDayLiveData(dayOfWeek: DayOfWeek): LiveData<Boolean> {

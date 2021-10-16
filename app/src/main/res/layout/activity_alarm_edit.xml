@@ -12,16 +12,16 @@
             type="com.quokkaman.android.app.ui.edit.AlarmPlanViewModel" />
 
         <variable
-            name="soundSettingViewModel"
-            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
+            name="soundSwitchModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingSwitchModel" />
 
         <variable
-            name="repeatSettingViewModel"
-            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
+            name="repeatSwitchModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingSwitchModel" />
 
         <variable
-            name="vibrateSettingViewModel"
-            type="com.quokkaman.android.app.ui.edit.AlarmSettingViewModel" />
+            name="vibrateSwitchModel"
+            type="com.quokkaman.android.app.ui.edit.AlarmSettingSwitchModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,16 +69,23 @@
                     android:hint="@string/alarm_title" />
 
                 <include
-                    layout="@layout/item_edit_alarm_setting_switch"
-                    app:viewModel="@{soundSettingViewModel}" />
+                    layout="@layout/item_edit_setting_switch"
+                    app:switchModel="@{soundSwitchModel}"
+                    app:setting="@{soundSwitchModel.settingLiveData}"
+                    app:enabled="@{soundSwitchModel.enabledLiveData}"
+                    />
 
                 <include
-                    layout="@layout/item_edit_alarm_setting_switch"
-                    app:viewModel="@{vibrateSettingViewModel}" />
+                    layout="@layout/item_edit_setting_switch"
+                    app:switchModel="@{vibrateSwitchModel}"
+                    app:setting="@{vibrateSwitchModel.settingLiveData}"
+                    app:enabled="@{vibrateSwitchModel.enabledLiveData}" />
 
                 <include
-                    layout="@layout/item_edit_alarm_setting_switch"
-                    app:viewModel="@{repeatSettingViewModel}" />
+                    layout="@layout/item_edit_setting_switch"
+                    app:switchModel="@{repeatSwitchModel}"
+                    app:setting="@{repeatSwitchModel.settingLiveData}"
+                    app:enabled="@{repeatSwitchModel.enabledLiveData}" />
             </LinearLayout>
         </ScrollView>
 
