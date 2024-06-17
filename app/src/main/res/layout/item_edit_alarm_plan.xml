@@ -46,6 +46,7 @@
                 android:layout_margin="4dp"
                 android:background="@android:color/transparent"
                 android:onClick="@{() -> viewModel.clickDate()}"
+                android:contentDescription="@string/desc_open_date_picker"
                 android:src="@drawable/ic_baseline_calendar_today_24" />
         </LinearLayout>
 
@@ -151,5 +152,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/sat" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            layout="@layout/item_edit_setting_switch"
+            app:switchModel="@{viewModel.holidaySwitchModel}"
+            app:setting="@{viewModel.holidaySwitchModel.settingLiveData}"
+            app:enabled="@{viewModel.holidaySwitchModel.enabledLiveData}" />
     </LinearLayout>
 </layout>

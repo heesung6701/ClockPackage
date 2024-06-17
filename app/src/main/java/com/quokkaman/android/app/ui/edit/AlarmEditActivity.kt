@@ -21,9 +21,9 @@ class AlarmEditActivity : AppCompatActivity(), AlarmEditPresenter {
 
     private lateinit var viewModel: AlarmEditViewModel
     private lateinit var planViewModel: AlarmPlanViewModel
-    private lateinit var soundSettingViewModel: AlarmSettingViewModel
-    private lateinit var repeatSettingViewModel: AlarmSettingViewModel
-    private lateinit var vibrateSettingViewModel: AlarmSettingViewModel
+    private lateinit var soundSwitchModel: AlarmSettingSwitchModel
+    private lateinit var repeatSwitchModel: AlarmSettingSwitchModel
+    private lateinit var vibrateSwitchModel: AlarmSettingSwitchModel
 
     private val planViewModelFactory =
         AlarmPlanViewModel.Factory { listener, year, monthOfYear, dayOfMonth ->
@@ -39,9 +39,9 @@ class AlarmEditActivity : AppCompatActivity(), AlarmEditPresenter {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent = result.data ?: return@registerForActivityResult
-                val vibrate =
+                val sound =
                     data.getParcelableExtra<AlarmSound>("") ?: return@registerForActivityResult
-                soundSettingViewModel.settingLiveData.value = vibrate
+                soundSwitchModel.settingLiveData.value = sound
             }
         }
 
@@ -51,7 +51,7 @@ class AlarmEditActivity : AppCompatActivity(), AlarmEditPresenter {
                 val data: Intent = result.data ?: return@registerForActivityResult
                 val vibrate =
                     data.getParcelableExtra<AlarmVibrate>("") ?: return@registerForActivityResult
-                vibrateSettingViewModel.settingLiveData.value = vibrate
+                vibrateSwitchModel.settingLiveData.value = vibrate
             }
         }
 
@@ -61,7 +61,7 @@ class AlarmEditActivity : AppCompatActivity(), AlarmEditPresenter {
                 val data: Intent = result.data ?: return@registerForActivityResult
                 val repeat =
                     data.getParcelableExtra<AlarmRepeat>("") ?: return@registerForActivityResult
-                repeatSettingViewModel.settingLiveData.value = repeat
+                repeatSwitchModel.settingLiveData.value = repeat
             }
         }
 
@@ -72,28 +72,28 @@ class AlarmEditActivity : AppCompatActivity(), AlarmEditPresenter {
         initViewModel()
         binding.viewModel = viewModel
         binding.planViewModel = planViewModel
-        binding.repeatSettingViewModel = repeatSettingViewModel
-        binding.soundSettingViewModel = soundSettingViewModel
-        binding.vibrateSettingViewModel = vibrateSettingViewModel
+        binding.repeatSwitchModel = repeatSwitchModel
+        binding.soundSwitchModel = soundSwitchModel
+        binding.vibrateSwitchModel = vibrateSwitchModel
         binding.lifecycleOwner = this
     }
 
     override fun generateAlarm(time: Time, name: String): Alarm {
         val plan = planViewModel.planLiveData.value
         val sound: AlarmSound =
-            (soundSettingViewModel.settingLiveData.value ?: AlarmSound(
+            (soundSwitchModel.settingLiveData.value ?: AlarmSound(
                 false,
                 "",
                 1.0f
             )) as AlarmSound
         val repeat: AlarmRepeat =
-            (repeatSettingViewModel.settingLiveData.value ?: AlarmRepeat(
+            (repeatSwitchModel.settingLiveData.value ?: AlarmRepeat(
                 false,
                 0,
                 0
             )) as AlarmRepeat
         val vibrate: AlarmVibrate =
-            (vibrateSettingViewModel.settingLiveData.value ?: AlarmVibrate(
+            (vibrateSwitchModel.settingLiveData.value ?: AlarmVibrate(
                 false,
                 AlarmVibrate.Type.None
             )) as AlarmVibrate
@@ -113,33 +113,42 @@ class AlarmEditActivity : AppCompatActivity(), AlarmEditPresenter {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this, editViewModelFactory).get(AlarmEditViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, editViewModelFactory).get(AlarmEditViewModel::class.java)
         planViewModel =
             ViewModelProvider(this, planViewModelFactory).get(AlarmPlanViewModel::class.java)
-        soundSettingViewModel = AlarmSettingViewModel {
-            soundLauncher.launch(
-                Intent(
-                    this,
-                    SoundSettingActivity::class.java
+
+        soundSwitchModel =
+            object : AlarmSettingSwitchModel(AlarmSound(false, "알람 이름", 0.5f)) {
+                override fun onClick() {
+                    soundLauncher.launch(
+                        Intent(
+                            applicationContext,
+                            SoundSettingActivity::class.java
+                        )
+                    )
+                }
+            }
+        repeatSwitchModel = object : AlarmSettingSwitchModel(AlarmRepeat(false, 1, 3)) {
+            override fun onClick() {
+                repeatLauncher.launch(
+                    Intent(
+                        applicationContext,
+                        RepeatSettingActivity::class.java
+                    )
                 )
-            )
-        }.apply {
-            settingLiveData.value = AlarmSound(false, "알람 이름", 0.5f)
+            }
         }
-        repeatSettingViewModel = AlarmSettingViewModel {
-            repeatLauncher.launch(
-                Intent(
-                    this,
-                    RepeatSettingActivity::class.java
+        vibrateSwitchModel = object :
+            AlarmSettingSwitchModel(AlarmVibrate(false, AlarmVibrate.Type.BasicCall)) {
+            override fun onClick() {
+                vibrateLauncher.launch(
+                    Intent(
+                        applicationContext,
+                        VibrateSettingActivity::class.java
+                    )
                 )
-            )
-        }.apply {
-            settingLiveData.value = AlarmRepeat(false, 1, 3)
-        }
-        vibrateSettingViewModel = AlarmSettingViewModel {
-            vibrateLauncher.launch(Intent(this, VibrateSettingActivity::class.java))
-        }.apply {
-            settingLiveData.value = AlarmVibrate(false, AlarmVibrate.Type.BasicCall)
+            }
         }
     }
     companion object {
